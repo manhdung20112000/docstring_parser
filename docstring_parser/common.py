@@ -41,6 +41,8 @@ class DocstringStyle(enum.Enum):
     JSDOC = 6
     PHPDOC = 7
     RDOC = 8
+    XML = 9
+    RUSTDOC = 10
     AUTO = 255
 
 

@@ -4,7 +4,8 @@ import inspect
 import typing as T
 
 from docstring_parser import epydoc, google, \
-javadoc, jsdoc, numpydoc, rest, phpdoc, rdoc
+javadoc, jsdoc, numpydoc, rest, phpdoc, rdoc, \
+xml, rustdoc
 from docstring_parser.attrdoc import add_attribute_docstrings
 from docstring_parser.common import (
     Docstring,
@@ -22,6 +23,8 @@ _STYLE_MAP = {
     DocstringStyle.JSDOC: jsdoc,
     DocstringStyle.PHPDOC: phpdoc,
     DocstringStyle.RDOC: rdoc,
+    DocstringStyle.XML: xml,
+    DocstringStyle.RUSTDOC: rustdoc,
 }
 
 
