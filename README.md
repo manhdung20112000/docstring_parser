@@ -11,8 +11,6 @@ pip install -r requirements.txt
 
 Manual install:
 ```bash
-poetry install -v
-poetry run pre-commit install
 pip install -e .
 
 ```
@@ -45,14 +43,19 @@ DocstringStyle.JAVADOC
 
 ## Docstring style
 Current supported docstring style:
-- [x] Javadoc
-- [x] JSdoc (JavaScript)
+(Old)
 - [x] Epydoc (Python)
 - [x] reST (Python)
 - [x] Google (Python)
 - [x] Numpy (Python)
-- [] XML
-- [] Rdoc (Ruby)
+(New)
+- [x] Javadoc
+- [x] JSdoc (JavaScript)
+- [x] XML
+- [x] Rdoc (Ruby)
+- [x] Rustdoc
+- [x] PHPdoc
+- [x] Doxygen
 
 # Original
 
