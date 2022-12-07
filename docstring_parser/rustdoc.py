@@ -27,7 +27,8 @@ def _build_meta(args: T.List[str], desc: str) -> DocstringMeta:
     :param title: title of section containing element
     :return:
     """
-    key = args[0].replace('-', '').lstrip()[1:-1]
+    key = args[0].strip().strip('-').strip('`')  # strip ` `
+    desc = desc.strip().strip('-')
 
     if key in PARAM_KEYWORDS:
         arg_name = args[1]
@@ -44,7 +45,7 @@ def _build_meta(args: T.List[str], desc: str) -> DocstringMeta:
             default=default,
         )
 
-    if key in RETURNS_KEYWORDS | YIELDS_KEYWORDS:
+    elif key in RETURNS_KEYWORDS | YIELDS_KEYWORDS:
         type_name = None
         
         if len(args) <= 1:
@@ -125,9 +126,9 @@ def parse(text):
                 f'Error parsing meta information near "{chunk}".'
             ) from ex
 
-        tag = tag.strip("#").lstrip()
+        tag = tag.strip("#").lstrip().lower()
 
-        if tag in ["Parameters", "Arguments", "Type parameters"]:
+        if tag in ["parameters", "arguments", "type parameters"]:
             tag = 'param'
             for match in re.finditer(
                 r"(^-\s*.*?)(?=^-|\Z)", desc_chunk, flags=re.S | re.M):
@@ -146,9 +147,7 @@ def parse(text):
                 args = [tag, args_name]
                 ret.meta.append(_build_meta(args, desc))
 
-        elif tag in ["Returns", "Lifetimes"]:
-            if tag == 'Returns':
-                tag = 'returns' 
+        elif tag in ["returns", "lifetimes"]:
             if re.search(r"-\s*`.*?`", desc_chunk):
                 for match in re.finditer(
                     r"(^-\s*.*?)(?=^-|\Z)", desc_chunk, flags=re.S | re.M):

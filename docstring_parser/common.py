@@ -18,6 +18,7 @@ PARAM_KEYWORDS = {
     "property",
     "name",
     "option",
+    "retval",
 }
 RAISES_KEYWORDS = {"raises", "raise", "except", "exception", "throws"}
 DEPRECATION_KEYWORDS = {"deprecation", "deprecated"}
@@ -43,6 +44,7 @@ class DocstringStyle(enum.Enum):
     RDOC = 8
     XML = 9
     RUSTDOC = 10
+    DOXYGEN = 11
     AUTO = 255
 
 

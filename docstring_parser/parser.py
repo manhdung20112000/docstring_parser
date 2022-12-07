@@ -3,7 +3,7 @@
 import inspect
 import typing as T
 
-from docstring_parser import epydoc, google, \
+from docstring_parser import doxygen, epydoc, google, \
 javadoc, jsdoc, numpydoc, rest, phpdoc, rdoc, \
 xml, rustdoc
 from docstring_parser.attrdoc import add_attribute_docstrings
@@ -25,6 +25,7 @@ _STYLE_MAP = {
     DocstringStyle.RDOC: rdoc,
     DocstringStyle.XML: xml,
     DocstringStyle.RUSTDOC: rustdoc,
+    DocstringStyle.DOXYGEN: doxygen,
 }
 
 
